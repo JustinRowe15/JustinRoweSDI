@@ -98,3 +98,38 @@ var driveToGasStation = function(){
 }
 
 driveToGasStation();
+
+var carFill = {
+	gasStationOpen: true,
+	carName: "Toyota",
+	tankSizeInGallons: 10,
+	moneyOnHand: 80.35,
+	costPerGallon: 3.50,
+	pumpGas: function() {
+		if (carFill.gasStationOpen === true){
+			console.log("They're open, we can pump gas.")
+		} else {
+			console.log("They're closed, we have to find another station that's open.")
+		}
+		return carFill.gasStationOpen;
+	},
+	fullTankCost: function(){
+		totalCostOfGas = carFill.tankSizeInGallons * carFill.costPerGallon;
+		doneFillingTank = "The " + carFill.carName + " is filled with gas and it cost us $" + totalCostOfGas + ".";
+		return doneFillingTank;
+	}
+}
+
+var readyToPumpGas = carFill.pumpGas();
+console.log(readyToPumpGas);
+
+var readyToLeave = carFill.fullTankCost();
+console.log(readyToLeave);
+
+function changeBackAfterGas(moneyOnHand,totalCostOfGas) {
+	var changeBackAgain = carFill.moneyOnHand - totalCostOfGas;
+		return changeBackAgain;
+}
+
+var moneyLeftAfterGas = changeBackAfterGas(80.35,35.00);
+console.log("Here is your change, $" + moneyLeftAfterGas + ".");
