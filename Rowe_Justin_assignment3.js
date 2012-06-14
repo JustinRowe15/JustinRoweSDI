@@ -6,14 +6,37 @@ Assignment Name: "Deliverable 3"
 Assignment Description: Shopping at the grocery store.
 */
 
-var moneyBrought = "$20.00",
+/* start global variables */
+var toDoListJustin = { 
+	errands: ["Groceries", "Gas", "Bank", "Laundry"],
+	checkMoney: function(){
+		console.log("Yes, I have money.");
+		},	
+	}, /* property:object with array and function */
+	enoughMoney = true, /* property:boolean */
+	moneyBrought = 100.00, /* property:string */
     groceryList = ["bananas", "milk", "spaghetti", "bread", "soap", "butter", "corn", 
-    "turkey", "aspirin"],
-    numberOfCoupons = 6,
+    "turkey", "aspirin"], /* property:array */
+    numberOfCoupons = 6, /* property:number */
     couponAmounts = { milk: .75, spaghetti: .45, bread: .70, butter: .55, 
-    corn: 1.00, aspirin: 2.00 }
-    transactionAmounts = [2.10, 3.25, 2.00, 3.25, 1.75, 2.00, 2.00, 3.75, 5.00]
-    taxRate = 0.065
+    corn: 1.00, aspirin: 2.00 }, /* property:object */
+    transactionAmounts = [2.10, 3.25, 2.00, 3.25, 1.75, 2.00, 2.00, 3.75, 5.00], /* property:array */
+    taxRate = 0.065 /* property:number */
+
+var todayDateTime = new Date(2012,5,15);
+console.log("Today is " + todayDateTime + ".");
+
+function moneyCheck() {
+	if (enoughMoney === true) {
+        console.log("We have " + moneyBrought + " dollars, so let's go run our errands today.");
+	} else {
+        console.log("Not enough money to spend today, will have to wait till pay day.");
+    }
+} /* method:function with conditional statement */
+
+toDoListJustin.checkMoney();
+
+moneyCheck();
     
 var getGroceries = function(groceryAmount) {
 	var groceryName = groceryList[groceryAmount],
@@ -28,7 +51,7 @@ var getAllGroceries = function (){
 	for (var groceryAmount = 0; groceryAmount < groceryList.length; groceryAmount++) {
 	getGroceries(groceryAmount);
 	}
-}   
+}  /* for loop and argument:string */ 
 
 getAllGroceries();
 
@@ -51,8 +74,27 @@ var checkOut = function() {
 	console.log("With your coupon, your new cost for Aspirin is $" + aspirinCost + ".");
 	var totalAfterCoupons = (totalCostBeforeCoupons - totalAmountOfCoupons);
 	console.log("Your total is $" + totalAfterCoupons + " and you saved a total of $" + totalAmountOfCoupons + ".");
-	}
+} /* math with object properties */
 
 checkOut();
 
-// var payForGroceries = function(money);
+function payForGroceries(moneyBrought,totalAfterCoupons){
+	var changeBack = moneyBrought - totalAfterCoupons;
+	return changeBack;
+}
+
+var moneyLeft = payForGroceries(100.00,19.65);
+console.log("Here's your change, $" + moneyLeft + "."); /* method:function, return:number and argument:number */
+
+console.log("We have " + moneyLeft + " and need to go get gas.  It's 5 miles to the nearest gas station.")
+
+var driveToGasStation = function(){
+	var milesToGasStation = 0;
+	var i = 0;
+	while (i < 5) {
+	milesToGasStation = milesToGasStation + 1; i++;
+	}	
+	console.log("We've driven " + milesToGasStation + " miles.  We're at the gas station.");
+}
+
+driveToGasStation();
