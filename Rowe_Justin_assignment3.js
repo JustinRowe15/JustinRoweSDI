@@ -3,15 +3,37 @@ Author: Justin M. Rowe
 Date: 14 Jun 2012
 Class: Scalable Data Infrastructures
 Assignment Name: "Deliverable 3"
-Assignment Description: Shopping at the grocery store.
+Assignment Description: Running errands.
 */
 
 /* start global variables */
 var toDoListJustin = { 
-	errands: ["Groceries", "Gas", "Bank", "Laundry"],
+	placesToGo: {
+		"Grocery Store":
+			{
+				"Name":"Safeway",
+				"Address":"123 M Street",
+				"City":"Alexandria",
+				"State":"Virginia",
+			},
+		"Gas":
+			{
+				"Name":"Chevron",
+				"Address":"456 K Street",
+				"City":"Springfield",
+				"State":"Virginia",
+			},
+		"Bank":
+			{
+				"Name":"Bank of America",
+				"Address":"789 A Street",
+				"City":"Mount Vernon",
+				"State":"Virginia",
+			}
+		}, /* JSON Data */
 	checkMoney: function(){
 		console.log("Yes, I have money.");
-		},	
+		}, /* String Function 1 */	
 	}, /* property:object with array and function */
 	enoughMoney = true, /* property:boolean */
 	moneyBrought = 100.00, /* property:string */
@@ -23,8 +45,10 @@ var toDoListJustin = {
     transactionAmounts = [2.10, 3.25, 2.00, 3.25, 1.75, 2.00, 2.00, 3.75, 5.00], /* property:array */
     taxRate = 0.065 /* property:number */
 
-var todayDateTime = new Date(2012,5,15);
+var todayDateTime = new Date(2012,5,15); /* Procedure */
 console.log("Today is " + todayDateTime + ".");
+
+toDoListJustin.checkMoney();
 
 function moneyCheck() {
 	if (enoughMoney === true) {
@@ -32,9 +56,7 @@ function moneyCheck() {
 	} else {
         console.log("Not enough money to spend today, will have to wait till pay day.");
     }
-} /* method:function with conditional statement */
-
-toDoListJustin.checkMoney();
+} /* String Function 2 with conditional statement */
 
 moneyCheck();
     
@@ -46,12 +68,12 @@ var getGroceries = function(groceryAmount) {
 		}
 		for (var groceries = 1; groceries < groceryList.length; groceries++) {
 		console.log("We have " + groceries + " groceries in the basket.");	
-};
+}; /* String Function 2 */
 var getAllGroceries = function (){
 	for (var groceryAmount = 0; groceryAmount < groceryList.length; groceryAmount++) {
 	getGroceries(groceryAmount);
 	}
-}  /* for loop and argument:string */ 
+}  /* Number Function 1 with for loop and argument:string */ 
 
 getAllGroceries();
 
@@ -74,14 +96,14 @@ var checkOut = function() {
 	console.log("With your coupon, your new cost for Aspirin is $" + aspirinCost + ".");
 	var totalAfterCoupons = (totalCostBeforeCoupons - totalAmountOfCoupons);
 	console.log("Your total is $" + totalAfterCoupons + " and you saved a total of $" + totalAmountOfCoupons + ".");
-} /* math with object properties */
+} /* Number Function 2 with math and object properties */
 
 checkOut();
 
 function payForGroceries(moneyBrought,totalAfterCoupons){
 	var changeBack = moneyBrought - totalAfterCoupons;
 	return changeBack;
-}
+} /* Number Function 3 */
 
 var moneyLeft = payForGroceries(100.00,19.65);
 console.log("Here's your change, $" + moneyLeft + "."); /* method:function, return:number and argument:number */
@@ -95,7 +117,7 @@ var driveToGasStation = function(){
 	milesToGasStation = milesToGasStation + 1; i++;
 	}	
 	console.log("We've driven " + milesToGasStation + " miles.  We're at the gas station.");
-}
+} /* Number Function 4 */
 
 driveToGasStation();
 
@@ -112,15 +134,15 @@ var carFill = {
 			console.log("They're closed, we have to find another station that's open.")
 		}
 		return carFill.gasStationOpen;
-	},
+	}, /* String Function 3 */
 	fullTankCost: function(){
-		totalCostOfGas = carFill.tankSizeInGallons * carFill.costPerGallon;
-		doneFillingTank = "The " + carFill.carName + " is filled with gas and it cost us $" + totalCostOfGas + ".";
+		totalCostOfGas = this.tankSizeInGallons * this.costPerGallon;
+		doneFillingTank = "The " + this.carName + " is filled with gas and it cost us $" + totalCostOfGas + ".";
 		return doneFillingTank;
-	}
+	} /* String Function 4 */
 }
 
-var readyToPumpGas = carFill.pumpGas();
+var readyToPumpGas = carFill.pumpGas(); /* accessor method */
 console.log(readyToPumpGas);
 
 var readyToLeave = carFill.fullTankCost();
@@ -129,7 +151,25 @@ console.log(readyToLeave);
 function changeBackAfterGas(moneyOnHand,totalCostOfGas) {
 	var changeBackAgain = carFill.moneyOnHand - totalCostOfGas;
 		return changeBackAgain;
-}
+} /* Number Function 5 */
 
 var moneyLeftAfterGas = changeBackAfterGas(80.35,35.00);
 console.log("Here is your change, $" + moneyLeftAfterGas + ".");
+
+var bankName = "Bank of America",
+	bank = {
+	bankOpen: true,
+	closingTime: "5 PM",
+	amountToDeposit: 45.34,
+}
+
+var depositMoney = function () {
+	if (bank.bankOpen === true) {
+		console.log ("The " + bankName + " is open, time to deposit what we have left.")
+	} else {
+		console.log ("The " + bankName + " is closed.  Have to try again tomorrow.")
+	}
+	return bank.bankOpen;
+} /* String Function 5 */
+
+depositMoney()
