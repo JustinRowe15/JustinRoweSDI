@@ -6,34 +6,37 @@ Assignment Name: "Deliverable 3"
 Assignment Description: Running errands.
 */
 
-/* start global variables */
+/* global variables */
 var toDoListJustin = { 
-	placesToGo: {
-		"Grocery Store":
-			{
-				"Name":"Safeway",
-				"Address":"123 M Street",
-				"City":"Alexandria",
-				"State":"Virginia",
-			},
-		"Gas":
-			{
-				"Name":"Chevron",
-				"Address":"456 K Street",
-				"City":"Springfield",
-				"State":"Virginia",
-			},
-		"Bank":
-			{
-				"Name":"Bank of America",
-				"Address":"789 A Street",
-				"City":"Mount Vernon",
-				"State":"Virginia",
-			}
-		}, /* JSON Data */
+		placesToGo: {
+			0:
+				{
+					Place: "Grocery Store",
+					Name:"Safeway",
+					Address:"123 M Street",
+					City:"Alexandria",
+					State:"Virginia",
+				},
+			1:
+				{
+					Place: "Gas Station",
+					Name:"Chevron",
+					Address:"456 K Street",
+					City:"Springfield",
+					State:"Virginia",
+				},
+			2:
+				{
+					Place: "Bank",
+					Name:"Bank of America",
+					Address:"789 A Street",
+					City:"Mount Vernon",
+					State:"Virginia",
+				}
+			}, /* JSON Data */	
 	checkMoney: function(){
 		console.log("Yes, I have money.");
-		}, /* String Function 1 */	
+		}, /* String Function 1 within object */		
 	}, /* property:object with array and function */
 	enoughMoney = true, /* property:boolean */
 	moneyBrought = 100.00, /* property:string */
@@ -41,22 +44,21 @@ var toDoListJustin = {
     "turkey", "aspirin"], /* property:array */
     numberOfCoupons = 6, /* property:number */
     couponAmounts = { milk: .75, spaghetti: .45, bread: .70, butter: .55, 
-    corn: 1.00, aspirin: 2.00 }, /* property:object */
-    transactionAmounts = [2.10, 3.25, 2.00, 3.25, 1.75, 2.00, 2.00, 3.75, 5.00], /* property:array */
-    taxRate = 0.065 /* property:number */
+    corn: 1.00, aspirin: 2.00 }, /* property:object */ 
+    transactionAmounts = [2.10, 3.25, 2.00, 3.25, 1.75, 2.00, 2.00, 3.75, 5.00]; /* property:array */
 
-var todayDateTime = new Date(2012,5,15); /* Procedure */
+var todayDateTime = new Date(2012,5,15); /* String accessor */
 console.log("Today is " + todayDateTime + ".");
 
 toDoListJustin.checkMoney();
 
 function moneyCheck() {
 	if (enoughMoney === true) {
-        console.log("We have " + moneyBrought + " dollars, so let's go run our errands today.");
+        console.log("We have " + moneyBrought + " dollars, so let's first go to the " + toDoListJustin.placesToGo[0].Place + ".");
 	} else {
         console.log("Not enough money to spend today, will have to wait till pay day.");
     }
-} /* String Function 2 with conditional statement */
+} /* Procedure with "back" and conditional statement and pull from JSON data */
 
 moneyCheck();
     
@@ -68,7 +70,8 @@ var getGroceries = function(groceryAmount) {
 		}
 		for (var groceries = 1; groceries < groceryList.length; groceries++) {
 		console.log("We have " + groceries + " groceries in the basket.");	
-}; /* String Function 2 */
+}; /* String Function 2 with for loop and argument:number*/
+
 var getAllGroceries = function (){
 	for (var groceryAmount = 0; groceryAmount < groceryList.length; groceryAmount++) {
 	getGroceries(groceryAmount);
@@ -78,6 +81,17 @@ var getAllGroceries = function (){
 getAllGroceries();
 
 console.log("We're done and ready to checkout.");
+
+var totalBeforeCoupons = function(){
+	amountBeforeCoupons = transactionAmounts[0]+ transactionAmounts[1] + transactionAmounts[2] +
+						transactionAmounts[3] + transactionAmounts[4] + transactionAmounts[5] +
+						transactionAmounts[6] + transactionAmounts[7] + transactionAmounts[8];
+	return amountBeforeCoupons;
+}
+
+var totalAmount = totalBeforeCoupons();
+console.log("Before coupons, your total is $" + totalAmount + ".");
+/* return:Array */
 
 var checkOut = function() {
 	var totalCostBeforeCoupons = (2.10 + 3.25 + 2.00 + 3.25 + 1.75 + 2.00 + 2.00 + 3.75 + 5.00),
@@ -117,7 +131,7 @@ var driveToGasStation = function(){
 	milesToGasStation = milesToGasStation + 1; i++;
 	}	
 	console.log("We've driven " + milesToGasStation + " miles.  We're at the gas station.");
-} /* Number Function 4 */
+} /* Number Function 4 with while loop*/
 
 driveToGasStation();
 
@@ -127,9 +141,15 @@ var carFill = {
 	tankSizeInGallons: 10,
 	moneyOnHand: 80.35,
 	costPerGallon: 3.50,
+	premiumGasAvailable : false,
 	pumpGas: function() {
 		if (carFill.gasStationOpen === true){
 			console.log("They're open, we can pump gas.")
+			if (carFill.premiumGasAvailable === true){
+				console.log("They have premium available.")
+				} else {
+				console.log("They ran out of premium, so let's get mid-grade.") /* nested conditional */
+				}
 		} else {
 			console.log("They're closed, we have to find another station that's open.")
 		}
