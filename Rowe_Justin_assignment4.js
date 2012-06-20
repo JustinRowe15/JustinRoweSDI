@@ -60,11 +60,6 @@ var myLibrary = function(){
 			return false;
 		};
 	};
-		
-	return {
-		"checkNumeric":checkNumeric,
-		"checkURL":checkURL
-	};
 	
 	
 	
@@ -81,15 +76,15 @@ var myLibrary = function(){
 
 
 
-/* Numbers of hours or days between two dates */
+/* Format a number to use a specific number of decimal places */
+
+	var decimalPlace = function(val){
+		var number = 7.25678
+		console.log("This number with " val " decimal places is " + number.toPrecision(val));
+		return number
 
 
-
-
-
-
-
-
+	};
 
 
 
@@ -98,14 +93,16 @@ var myLibrary = function(){
 /* String number to actual Number */
 
 
+	var actualNumber = function(val){
+		var 
 
-
-
-
-
-	
+	return {
+		"checkNumeric":checkNumeric,
+		"checkURL":checkURL,
+		"decimalPlace":decimalPlace
+	};
 
 };
 
 var newLib = new myLibrary();
-
+decimalPlace(2);
