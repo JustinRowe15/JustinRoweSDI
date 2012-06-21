@@ -10,7 +10,7 @@ var myLibrary = function(){
 	
 /* 1. Convert a string version of a number into an actual number */
 	var convertNumber = function(a){ //the function convertNumber passes a string through the argument "a"
-	var newNumber = parseFloat(a); // the variable newNumber parses the string and returns a floating point number
+	var newNumber = Number(a); // the variable newNumber parses the string and returns a floating point number
 	return newNumber;
 	};
 	
@@ -23,11 +23,6 @@ var myLibrary = function(){
 	};
 
 /* 3. Title-case a string */
-/* First, in this function, splitting the argument "words" into a separate words will allow
-the rest of the function to find the first letter using the for loop.  Then it takes the first
-letter using the charAt method and then applies the toUpperCase method to uppercase the first
-letter.  Then it returns the argument using the join method. */
-
 	var titleCase = function(words){   // words are passed into this function as arguments
 	var wordsTitleCase = words.split(" ");  // first, creating a variable show the words split by a space in between each word
 	for (var a =0; a < wordsTitleCase.length; a++) // then a for loop is passed for the for the length of the argument
@@ -46,6 +41,14 @@ letter.  Then it returns the argument using the join method. */
 		var dateTwo = new Date(year2,month2,day2); // this variable show the old date
 		var dateDifference = "The date difference is " + (((dateOne - dateTwo)/1000)/86400) + " days."; // this math variable shows the difference and then divides the milliseconds into days.
 		return dateDifference;
+	};
+	
+/* 5. Total value of numbers in an array */
+	var totalValue = function(amounts){
+	var total = 0;	
+		for(var a = 0; a < amounts.length; a++) {
+		total += amounts[a];
+		};	
 	};	
 	
 	return {
@@ -53,6 +56,7 @@ letter.  Then it returns the argument using the join method. */
 		"differenceOfDays":differenceOfDays,
 		"decimalPlace":decimalPlace,
 		"titleCase":titleCase,
+		"totalValue":totalValue,
 	};
 
 };
@@ -70,3 +74,6 @@ console.log(dateReturn);
 
 newLib.decimalPlace(3,4.1234567);
 console.log(decimalPointStatement);
+
+var newValue = newLib.totalValue([10,20,30,40,"word"]);
+console.log(newValue);
