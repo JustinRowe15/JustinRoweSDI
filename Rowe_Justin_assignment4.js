@@ -8,47 +8,21 @@ Assignment Description: My Library.
 
 var myLibrary = function(){
 	
-/* Check Phone Number */
-
-	/*var checkPhoneNumber = function(val){
-		var
-		if (){
-			return true;
-		} else {
-			return false;
-		};
-	};*/
-
-
-
-
-
-
-/* Check email address */	
-	var checkEmail = function(email){
-	var 
-		if (){
-			return true;
-		} else {
-			return false;
-		};
-
-
-
-
-
-
-
+/* 1. Convert a string version of a number into an actual number */
+	var convertNumber = function(a){ //the function convertNumber passes a string through the argument "a"
+	var newNumber = parseFloat(a); // the variable newNumber parses the string and returns a floating point number
+	return newNumber;
 	};
+	
 
-/* Format a number to use a specific number of decimal places */
+/* 2. Format a number to use a specific number of decimal places */
 	var decimalPlace = function(a,b){
 		var number = b
 		decimalPointStatement = "This number with " + a + " decimal places is " + number.toFixed(a);
 		return decimalPointStatement;
 	};
 
-/* Title-case a string */
+/* 3. Title-case a string */
 /* First, in this function, splitting the argument "words" into a separate words will allow
 the rest of the function to find the first letter using the for loop.  Then it takes the first
 letter using the charAt method and then applies the toUpperCase method to uppercase the first
@@ -62,19 +36,20 @@ letter.  Then it returns the argument using the join method. */
 		wordsTitleCase[a] = b + wordsTitleCase[a].substr(1); // this math show the addition of the variable b to the substr method of this wordsTitleCase variable
 		}
 	return wordsTitleCase.join(" "); // this returns the variable after joining the words
-	
+	};
 	//references: https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/String
 				  http://stackoverflow.com		
 
-/* Check difference of days between two dates */
-	var differenceOfDays = function(year1,month1,day1,year2,month2,day2){
-		var dateOne = new Date(year1,month1,day1);
-		var dateTwo = new Date(year2,month2,day2);
-		var dateDifference = "The date difference is " + (((dateOne - dateTwo)/1000)/86400) + " days.";
+/* 4. Check difference of days between two dates */
+	var differenceOfDays = function(year1,month1,day1,year2,month2,day2){ // Here, there are six arguments being passed through the function to show to separate dates
+		var dateOne = new Date(year1,month1,day1); // this variable shows the new date
+		var dateTwo = new Date(year2,month2,day2); // this variable show the old date
+		var dateDifference = "The date difference is " + (((dateOne - dateTwo)/1000)/86400) + " days."; // this math variable shows the difference and then divides the milliseconds into days.
 		return dateDifference;
 	};	
 	
 	return {
+		"convertNumber":convertNumber,
 		"differenceOfDays":differenceOfDays,
 		"decimalPlace":decimalPlace,
 		"titleCase":titleCase,
@@ -83,6 +58,9 @@ letter.  Then it returns the argument using the join method. */
 };
 
 var newLib = new myLibrary();
+
+var actualNumber = newLib.convertNumber("99");
+console.log(actualNumber);
 
 var capitalWords = newLib.titleCase("justin michael rowe");
 console.log(capitalWords);
