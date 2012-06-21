@@ -7,27 +7,17 @@ Assignment Description: My Library.
 */
 
 var myLibrary = function(){
-
-/* check numeric function */
-
-	var checkNumeric = function(val){
-		if (isNaN(val()){
-			return false;
-		} else {
-			return true;
-		};
-	};
 	
 /* Check Phone Number */
 
-	var checkPhoneNumber = function(val){
+	/*var checkPhoneNumber = function(val){
 		var
 		if (){
 			return true;
 		} else {
 			return false;
 		};
-	};
+	};*/
 
 
 
@@ -50,59 +40,40 @@ var myLibrary = function(){
 
 
 
-/* Check URL Function */
-
-	var checkURL = function(val){
-		var first = val.substring(0,val.indexOf(":"));
-		if ( ){
-			return true;
-		} else {
-			return false;
-		};
-	};
-	
-	
-	
-/* Title-case a string */
-
-
-	var titleCase = function(val){
-		var
-
-
-
-
-
-
-
+/* Check difference of days between two dates */
+	var differenceOfDays = function(year1,month1,day1,year2,month2,day2){
+		var dateOne = new Date(year1,month1,day1);
+		var dateTwo = new Date(year2,month2,day2);
+		var dateDifference = "The date difference is " + (dateOne.getTime() - dateTwo.getTime()) + ".";
+		return dateDifference;
+	};	
 
 /* Format a number to use a specific number of decimal places */
+	var decimalPlace = function(a,b){
+		var number = b
+		decimalPointStatement = "This number with " + a + " decimal places is " + number.toFixed(a);
+		return decimalPointStatement;
+	};
 
-	var decimalPlace = function(val){
-		var number = 7.25678
-		console.log("This number with " val " decimal places is " + number.toPrecision(val));
-		return number
+/* Title-case a string */
+	var titleCase = function(){
+
 
 
 	};
-
-
-
-
-
-/* String number to actual Number */
-
-
-	var actualNumber = function(val){
-		var 
-
+	
 	return {
-		"checkNumeric":checkNumeric,
-		"checkURL":checkURL,
-		"decimalPlace":decimalPlace
+		"differenceOfDays":differenceOfDays,
+		"decimalPlace":decimalPlace,
+		"titleCase":titleCase,
 	};
 
 };
 
 var newLib = new myLibrary();
-decimalPlace(2);
+
+newLib.decimalPlace(3,4.1234567);
+console.log(decimalPointStatement);
+
+newLib.differenceOfDays(2012,5,1,2012,3,1);
+console.log(dateDifference);
