@@ -43,13 +43,12 @@ var myLibrary = function(){
 		return dateDifference;
 	};
 	
-/* 6. Is the string a phone number? */
+/* 5. Is the string a phone number? */
 	var stringURL = function(phoneNumber){
-	var firstSet = phoneNumber.slice(0,3);
-	var secondSet = phoneNumber.slice(4,3);
-	var thirdSet = phoneNumber.slice(8,4);
-	var phoneString = firstSet + "-" + secondSet + "-" + thirdSet;
-	if (phoneString = firstSet + "-" + secondSet + "-" + thirdSet){
+	var firstSet = phoneNumber.substring(0,3);
+	var secondSet = phoneNumber.substring(4,3);
+	var thirdSet = phoneNumber.substring(8,4);
+	if (phoneNumber = firstSet + "-" + secondSet + "-" + thirdSet){
 		console.log("This is a phone number.")
 	} else {
 		console.log("This is not a phone number.")
@@ -57,12 +56,10 @@ var myLibrary = function(){
 		};
 	};
 	
-/* 5. Total value of numbers in an array */
-	var totalValue = function(amounts){
-	var total = 0;	
-		for(var a = 0; a < amounts.length; a++) {
-		total += this;
-		};	
+/* 6. Total value of numbers in an array */
+	var totalValue = function(a,b,c,d){
+		var newValue = a + b + c + d
+		return newValue;	
 	};
 
 	
@@ -91,12 +88,8 @@ console.log(dateReturn);
 newLib.decimalPlace(3,4.1234567);
 console.log(decimalPointStatement);
 
-var phoneNumber = newLib.stringURL(123-456-6789);
-console.log(phoneNumber);
-
-var allAmounts = [10, 20 ,30, "word"];
-var newValue = newLib.totalValue(allAmounts);
-console.log(newValue);
-
 var phoneNumber = newLib.stringURL("123-456-6789");
 console.log(phoneNumber);
+
+var totalValues = newLib.totalValue(10,20,30,"word");
+console.log(totalValues);
